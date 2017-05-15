@@ -20,6 +20,8 @@ public class TicTacToe {
         board.displayBoard();
 
         while(!someoneWins){
+            askAboutWhoStart();
+            startSign = choseSign();
             choosePlaceWherePutChar();
             board.displayBoard();
             someoneWins = board.isSomeoneWinner();
@@ -30,6 +32,17 @@ public class TicTacToe {
             startSign = changePlayers(startSign);
         }
 
+    }
+
+    private void askAboutWhoStart() {
+        System.out.println("Who starts? 1 - X 2 - O");
+    }
+
+    private char choseSign() {
+        if(scanner.nextInt() == 1){
+            return 'X';
+        }
+        return 'O';
     }
 
     private void notifyAboutWin() {
