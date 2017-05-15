@@ -50,7 +50,7 @@ public class TicTacToe {
 
 
     private void choosePlaceWherePutChar() {
-        System.out.println("Your position: ");
+        System.out.println("Your position(y,x): ");
         int x = scanner.nextInt();
         int y = scanner.nextInt();
         board.setTile(new Tile(startSign),x,y);
