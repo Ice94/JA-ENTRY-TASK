@@ -1,8 +1,11 @@
+import epam.tictactoe.TicTacToe;
+
 /**
  * Created by Mateusz on 2017-05-15.
  */
 public class Main {
     public static void main (String [] args){
-        System.out.println("Hello.");
+        TicTacToe ticTacToe = new TicTacToe(3);
+        ticTacToe.displayBoard();
     }
 }

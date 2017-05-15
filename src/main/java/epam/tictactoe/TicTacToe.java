@@ -12,5 +12,13 @@ public class TicTacToe {
         board = new char[size][size];
     }
 
+    public void displayBoard(){
+        for (int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++){
+                System.out.print("[" + board[i][j] + "]");
+            }
+            System.out.println();
+        }
+    }
 
 }
