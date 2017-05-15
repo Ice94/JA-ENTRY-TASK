@@ -14,8 +14,18 @@ public class TicTacToe {
     private char startSign = 'X';
     Scanner scanner = new Scanner(System.in);
 
+    public void start(){
+        int nextGame;
+        do{
+            play();
+            message("Do you want Play Again? 1 - yes 0 - no");
+            nextGame = scanner.nextInt();
+
+        }while (nextGame == 1);
+    }
+
     public void play() {
-        System.out.println("Play the game!");
+        message("Play the game!");
         setConfiguration();
         board.displayBoard();
         message("Who starts? 1 - X 2 - O");
