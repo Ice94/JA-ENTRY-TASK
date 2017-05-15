@@ -3,11 +3,12 @@ package epam.tictactoe;
 /**
  * Created by Mateusz on 2017-05-15.
  */
-class Board {
+class Board{
     private Tile tiles [][];
     private int size;
+    private final UIMessager uiMessager;
 
-    Board(int size){
+    Board(int size, UIMessager uiMessager){
         this.size = size;
         tiles = new Tile[size][size];
         for (int i = 0; i < size; i++){
@@ -15,15 +16,20 @@ class Board {
                 tiles[i][j] = new Tile('F');
             }
         }
+        this.uiMessager = uiMessager;
     }
 
     void displayBoard(){
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
-                System.out.print("[" + tiles[i][j].getValue()+ "]");
+                message("[" + tiles[i][j].getValue()+ "]");
             }
-            System.out.println();
+            message("\n");
         }
+    }
+
+    private void message(String s) {
+        uiMessager.message(s);
     }
 
     void setTile(Tile tile, int x, int y) {

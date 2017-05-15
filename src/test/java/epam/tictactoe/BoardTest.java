@@ -12,10 +12,10 @@ public class BoardTest {
 
     private int size = 3;
     private Board board;
-
+    private UIMessager uiMessager = new UIMessager();
     @Before
     public void init(){
-        board = new Board(size);
+        board = new Board(size, uiMessager);
     }
 
     @Test
