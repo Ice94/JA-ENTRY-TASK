@@ -10,12 +10,17 @@ class Board {
     Board(int size){
         this.size = size;
         tiles = new Tile[size][size];
+        for (int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++){
+                tiles[i][j] = new Tile('F');
+            }
+        }
     }
 
     void displayBoard(){
         for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
-                System.out.print("[" + tiles[i][j] + "]");
+                System.out.print("[" + tiles[i][j].getValue()+ "]");
             }
             System.out.println();
         }
@@ -24,5 +29,45 @@ class Board {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public void setTile(Tile tile, int x, int y) {
+        tiles[x][y] = tile;
+    }
+
+    public boolean isSomeoneWinner() {
+
+        for(int i = 0; i < size-2; i++){
+            for(int j = 0; j < size-2; j++){
+                if(checkVertical(i,j) || checkHorizontal(i,j) || checkAcross(i,j)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean checkAcross(int i, int j) {
+        if(tiles[i][j].getValue() == tiles[i+1][j+1].getValue() &&
+                tiles[i+1][j+1].getValue() == tiles[i+1][j+2].getValue()){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkHorizontal(int i, int j) {
+        if(tiles[i][j].getValue() == tiles[i][j+1].getValue() &&
+                tiles[i][j+1].getValue() == tiles[i][j+2].getValue()){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkVertical(int i, int j) {
+        if(tiles[i][j].getValue() == tiles[i+1][j].getValue() &&
+                tiles[i+1][j].getValue() == tiles[i+2][j].getValue()){
+            return true;
+        }
+        return false;
     }
 }
