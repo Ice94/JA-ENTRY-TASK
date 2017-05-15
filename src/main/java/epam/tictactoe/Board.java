@@ -39,7 +39,7 @@ class Board {
 
         for(int i = 0; i < size-2; i++){
             for(int j = 0; j < size-2; j++){
-                if(checkVertical(i,j) || checkHorizontal(i,j) || checkAcross(i,j)){
+                if(checkVertical(i,j) || checkHorizontal(i,j) || checkAcrossAsc(i,j)){
                     return true;
                 }
             }
@@ -47,7 +47,15 @@ class Board {
         return false;
     }
 
-    private boolean checkAcross(int i, int j) {
+    private boolean checkAcrossDesc(int i, int j) {
+        if(tiles[i][j].getValue() == tiles[i-1][j-1].getValue() &&
+                tiles[i-1][j-1].getValue() == tiles[i-1][j-2].getValue()){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkAcrossAsc(int i, int j) {
         if(tiles[i][j].getValue() == tiles[i+1][j+1].getValue() &&
                 tiles[i+1][j+1].getValue() == tiles[i+1][j+2].getValue()){
             return true;
