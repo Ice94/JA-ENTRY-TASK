@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class TicTacToe {
 
     private final char PLAYER_X = 'X';
-    private final char PLAYER_O = 'X';
+    private final char PLAYER_O = 'O';
     private Board board;
     private boolean someoneWins = false;
     private char startSign = 'X';
@@ -31,11 +31,14 @@ public class TicTacToe {
         int x = scanner.nextInt();
         int y = scanner.nextInt();
         board.setTile(new Tile(startSign),x,y);
-        changePlayers(startSign);
+        startSign = changePlayers(startSign);
     }
 
-    private void changePlayers(char startSign) {
-
+    private char changePlayers(char startSign) {
+        if(startSign == PLAYER_X){
+            return PLAYER_O;
+        }
+        return PLAYER_X;
     }
 
     private void setConfiguration() {
