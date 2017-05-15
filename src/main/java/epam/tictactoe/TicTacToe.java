@@ -1,24 +1,24 @@
 package epam.tictactoe;
 
+import java.util.Scanner;
+
 /**
  * Created by Mateusz on 2017-05-15.
  */
 public class TicTacToe {
-    private char board[][];
-    private int size;
 
-    public TicTacToe(int size) {
-        this.size = size;
-        board = new char[size][size];
+    private Board board;
+
+    public void play() {
+        System.out.println("Play the game!");
+        setConfiguration();
+        board.displayBoard();
     }
 
-    public void displayBoard(){
-        for (int i = 0; i < size; i++){
-            for (int j = 0; j < size; j++){
-                System.out.print("[" + board[i][j] + "]");
-            }
-            System.out.println();
-        }
+    private void setConfiguration() {
+        System.out.println("Choose size of the board: ");
+        Scanner scanner = new Scanner(System.in);
+        board = new Board(scanner.nextInt());
     }
 
 }
