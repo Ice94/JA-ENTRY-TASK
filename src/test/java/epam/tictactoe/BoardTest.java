@@ -36,5 +36,22 @@ public class BoardTest {
         assertTrue(board.isSomeoneWinner());
     }
 
+    @Test
+    public void shouldWinIfThreeInAAcrossDesc(){
+        board.setTile(new Tile('O'),0,0);
+        board.setTile(new Tile('O'),1,1);
+        board.setTile(new Tile('O'),2,2);
+
+        assertTrue(board.isSomeoneWinner());
+    }
+
+    @Test
+    public void shouldWinIfThreeInAAcrossAsc(){
+        board.setTile(new Tile('O'),0,2);
+        board.setTile(new Tile('O'),1,1);
+        board.setTile(new Tile('O'),2,0);
+
+        assertTrue(board.isSomeoneWinner());
+    }
 
 }
