@@ -18,25 +18,28 @@ public class TicTacToe {
         System.out.println("Play the game!");
         setConfiguration();
         board.displayBoard();
+        message("Who starts? 1 - X 2 - O");
+        startSign = choseSign();
 
         while(!someoneWins){
-            askAboutWhoStart();
-            startSign = choseSign();
-            choosePlaceWherePutChar();
+            message("Turn: " + startSign);
             board.displayBoard();
+            choosePlaceWherePutChar();
             someoneWins = board.isSomeoneWinner();
 
             if(someoneWins){
                 notifyAboutWin();
+
             }
             startSign = changePlayers(startSign);
         }
 
     }
 
-    private void askAboutWhoStart() {
-        System.out.println("Who starts? 1 - X 2 - O");
+    private void message(String s) {
+        System.out.println(s);
     }
+
 
     private char choseSign() {
         if(scanner.nextInt() == 1){
