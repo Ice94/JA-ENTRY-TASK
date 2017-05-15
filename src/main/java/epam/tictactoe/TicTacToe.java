@@ -22,16 +22,26 @@ public class TicTacToe {
         while(!someoneWins){
             choosePlaceWherePutChar();
             board.displayBoard();
-            board.isSomeoneWinner();
+            someoneWins = board.isSomeoneWinner();
+
+            if(someoneWins){
+                notifyAboutWin();
+            }
+            startSign = changePlayers(startSign);
         }
 
     }
+
+    private void notifyAboutWin() {
+        System.out.println(startSign + " wins!");
+    }
+
     private void choosePlaceWherePutChar() {
         System.out.println("Your position: ");
         int x = scanner.nextInt();
         int y = scanner.nextInt();
         board.setTile(new Tile(startSign),x,y);
-        startSign = changePlayers(startSign);
+
     }
 
     private char changePlayers(char startSign) {
