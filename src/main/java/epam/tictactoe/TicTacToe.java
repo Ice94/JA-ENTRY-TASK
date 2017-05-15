@@ -23,13 +23,13 @@ public class TicTacToe {
 
         while(!someoneWins){
             message("Turn: " + startSign);
+
             board.displayBoard();
             choosePlaceWherePutChar();
             someoneWins = board.isSomeoneWinner();
 
             if(someoneWins){
-                notifyAboutWin();
-
+                message(startSign + " wins!");
             }
             startSign = changePlayers(startSign);
         }
@@ -48,9 +48,6 @@ public class TicTacToe {
         return 'O';
     }
 
-    private void notifyAboutWin() {
-        System.out.println(startSign + " wins!");
-    }
 
     private void choosePlaceWherePutChar() {
         System.out.println("Your position: ");
